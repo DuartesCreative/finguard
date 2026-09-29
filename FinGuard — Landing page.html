@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FinGuard — seu dinheiro, sob guarda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--ink:#0f1836;--ink2:#1b2a63;--paper:#eef0f6;--pfg:#0f1836;--pmut:#586180;--pbd:#d3d8e6;--blue:#5a8cef;--green:#4b7a63;--gold:#d9b96a;
+--serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",Georgia,serif;--sans:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#141f45;--pfg:#eef1fa;--pmut:#a0abc9;--pbd:#26345f}}
+:root[data-theme="dark"]{--paper:#141f45;--pfg:#eef1fa;--pmut:#a0abc9;--pbd:#26345f}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--pfg);font:400 17px/1.55 var(--sans)}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.w{max-width:1160px;margin:0 auto;padding:0 24px}
+.ink{background:var(--ink);color:#eef1fa}
+h1,h2,.serif{font-family:var(--serif);font-weight:700;letter-spacing:-.01em}
+h1{font-size:clamp(2.8rem,6.2vw,5.4rem);line-height:1.02;margin:0 0 24px}
+h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.08;margin:0}
+p{margin:0 0 16px}
+nav{display:flex;align-items:center;gap:28px;height:76px;position:relative;z-index:3}
+.logo{display:flex;align-items:center;gap:9px;font:700 1.35rem var(--serif)}
+nav .l{display:flex;gap:26px;margin-left:20px;font-size:.92rem;color:#aab5d6}
+nav .l a:hover{color:#fff}nav .btn{margin-left:auto}
+.btn{display:inline-block;font-weight:700;font-size:.95rem;padding:13px 26px;border-radius:999px;background:#eef1fa;color:var(--ink);border:0;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.o{background:transparent;color:#eef1fa;box-shadow:inset 0 0 0 1.5px #3a4a85}
+.btn.b{background:var(--ink);color:#fff}
+.hero{position:relative;overflow:hidden}
+.hg{display:grid;grid-template-columns:1fr 1.15fr;gap:20px;align-items:center;min-height:640px;padding-bottom:40px;position:relative;z-index:2}
+.lead{font-size:1.15rem;color:#b4bedb;max-width:28em;margin-bottom:28px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative;height:580px}
+.rings{position:absolute;left:50%;top:50%;width:780px;max-width:none;transform:translate(-50%,-50%);z-index:0;pointer-events:none}
+.rings g{transform-box:fill-box;transform-origin:center}
+.rg1{animation:spin 140s linear infinite}.rg2{animation:spin 100s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.dot{animation:pop .6s ease-out both;transform-box:fill-box;transform-origin:center}
+@keyframes pop{from{opacity:0;transform:scale(0)}to{opacity:.5;transform:scale(1)}}
+#c3d{position:absolute;inset:0;z-index:1}
+#c3d canvas{display:block;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+#c3d canvas:active{cursor:grabbing}
+.chip{position:absolute;z-index:2;background:rgba(15,24,54,.82);border:1px solid #33427c;border-radius:14px;padding:10px 14px;font-size:.8rem;backdrop-filter:blur(6px);pointer-events:none}
+.chip b{display:block;font-size:.95rem}.chip i{display:block;height:4px;border-radius:2px;background:#26345f;margin-top:8px;overflow:hidden}.chip i u{display:block;height:100%;background:var(--blue)}
+.c1{left:2%;bottom:16%}.c2{right:0;top:14%}
+.hint{position:absolute;z-index:2;bottom:0;width:100%;text-align:center;font-size:.8rem;color:#8f9bc4;pointer-events:none}
+section{padding:96px 0}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;margin-bottom:40px}
+.fig{text-align:right}
+.fig b{display:block;font:700 clamp(3rem,7vw,5.6rem)/1 var(--serif)}
+.fig span{color:var(--pmut);font-size:.9rem}
+.bars{display:flex;align-items:flex-end;gap:8px;height:300px;border-bottom:2px solid var(--pfg)}
+.bars button{flex:1;min-width:0;border:0;padding:0;background:var(--pbd);cursor:pointer;transition:background .15s,transform .15s;transform-origin:bottom}
+.bars button:hover,.bars button.on{background:var(--blue)}
+.bars button.on{transform:scaleY(1.02)}
+.lab{display:flex;font-size:.8rem;color:var(--pmut);padding-top:8px}.lab span{flex:2;text-align:center}
+.words{border-bottom:1px solid var(--pbd)}
+.words div{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;padding:30px 20px;border-top:1px solid var(--pbd);transition:background .25s,color .25s}
+.words div:hover{background:var(--ink);color:#eef1fa}
+.words div:hover p{color:#b4bedb}
+.words .serif{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1}
+.words p{margin:0;color:var(--pmut);max-width:26em;transition:color .25s}
+details{border-top:1px solid var(--pbd);padding:20px 0}details:last-of-type{border-bottom:1px solid var(--pbd)}
+summary{font-weight:700;cursor:pointer}details p{margin:10px 0 0;color:var(--pmut)}
+.faq{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+.cta{text-align:left;padding:96px 0}
+.cta h2{font-size:clamp(2.2rem,5.4vw,4.4rem);max-width:14em;margin-bottom:32px}
+footer{padding:0 0 36px;font-size:.85rem;color:#8f9bc4;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:860px){.hg,.faq,.words div{grid-template-columns:1fr}nav .l{display:none}.stage{height:440px}.rings{width:520px}section{padding:64px 0}.hg{min-height:0}.fig{text-align:left}.c1{left:0}}
+@media (prefers-reduced-motion:reduce){.rg1,.rg2{animation:none}.dot{animation:none;opacity:.5}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="ink hero">
+ <div class="w">
+  <nav>
+   <a class="logo" href="#"><svg width="22" height="25" viewBox="0 0 24 26" aria-hidden="true"><path d="M12 1l9.500 3.300v7.400c0 6-4 10.400-9.500 13.300C6.500 22.100 2.500 17.700 2.500 11.700V4.300z" fill="#5a8cef"/><path d="M7.500 12.800l3 3 6-6.500" fill="none" stroke="#0f1836" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></svg>FinGuard</a>
+   <div class="l"><a href="#relatorios">Relatórios</a><a href="#regras">Regras</a><a href="#faq">Dúvidas</a></div>
+   <a class="btn" href="#comecar">Começar grátis</a>
+  </nav>
+  <div class="hg">
+   <div>
+    <h1>Seu dinheiro, sob guarda.</h1>
+    <p class="lead">Cartões virtuais com limite, alertas antes do estouro e um relatório que você entende sem abrir planilha.</p>
+    <div class="row"><a class="btn" href="#comecar">Criar minha conta</a><a class="btn o" href="#relatorios">Ver relatórios</a></div>
+   </div>
+   <div class="stage">
+    <svg class="rings" id="rings" viewBox="0 0 406 400" aria-hidden="true"><g class="rg1" id="g1"></g><g class="rg2" id="g2"></g></svg>
+    <div id="c3d" aria-label="Cartão 3D interativo. Arraste para girar, clique para virar."></div>
+    <div class="chip c1"><span>Assinaturas</span><b>R$ 187 de R$ 300</b><i><u style="width:62%"></u></i></div>
+    <div class="chip c2"><span>Meta de reserva</span><b>68% concluída</b><i><u style="width:68%;background:#6fae8f"></u></i></div>
+    <span class="hint">Arraste para girar. Clique para virar o cartão.</span>
+   </div>
+  </div>
+ </div>
+</div>
+
+<section id="relatorios">
+ <div class="w">
+  <div class="top">
+   <h2>Cada quinzena,<br>uma barra.</h2>
+   <div class="fig"><b id="fig">R$ 0</b><span id="cap">Selecione uma barra</span></div>
+  </div>
+  <div class="bars" id="bars"></div>
+  <div class="lab"><span>jan</span><span>fev</span><span>mar</span><span>abr</span><span>mai</span><span>jun</span></div>
+ </div>
+</section>
+
+<section id="regras" style="padding-top:0">
+ <div class="w">
+  <div class="words">
+   <div><span class="serif">Limite.</span><p>Cada cartão tem um teto. Passou dele, a compra não é aprovada.</p></div>
+   <div><span class="serif">Alerta.</span><p>Quando uma categoria chega a 80% do orçamento, você recebe um aviso.</p></div>
+   <div><span class="serif">Bloqueio.</span><p>Pausou ou excluiu o cartão pelo app? Vale na hora.</p></div>
+  </div>
+ </div>
+</section>
+
+<section id="faq" style="padding-top:0">
+ <div class="w faq">
+  <h2>Dúvidas comuns</h2>
+  <div>
+   <details><summary>Preciso pagar para usar?</summary><p>Não. Você começa grátis e só escolhe um plano se precisar de mais recursos.</p></details>
+   <details><summary>Preciso conectar minha conta do banco?</summary><p>Não é obrigatório. Você pode lançar os gastos à mão ou conectar depois.</p></details>
+   <details><summary>Funciona no celular?</summary><p>Sim. A FinGuard foi pensada para o uso diário no celular.</p></details>
+  </div>
+ </div>
+</section>
+
+<div class="ink" id="comecar">
+ <div class="w cta">
+  <h2>Coloque seu dinheiro sob guarda.</h2>
+  <a class="btn" href="mailto:contato@finguard.app?subject=Quero%20acesso%20%C3%A0%20FinGuard">Criar minha conta</a>
+ </div>
+ <div class="w"><footer><span>© 2026 FinGuard</span><span>Feito no Brasil</span></footer></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,NS='http://www.w3.org/2000/svg';
+  function ring(g,n,r,col,b){for(var i=0;i<n;i++){var a=i/n*6.2832,c=document.createElementNS(NS,'circle');
+    c.setAttribute('cx',(203+r*Math.cos(a)).toFixed(1));c.setAttribute('cy',(200+r*Math.sin(a)).toFixed(1));
+    c.setAttribute('r','7');c.setAttribute('fill',col);c.setAttribute('class','dot');c.style.animationDelay=(b+i*.02)+'s';
+    document.getElementById(g).appendChild(c)}}
+  ring('g1',48,185,'#5A8CEF',0);ring('g2',36,150,'#4B7A63',.2);
+
+  var d=[2840,3120,2650,3480,3910,3370,4120,3760,4380,4010,4650,5120],
+  p=['1 a 14 jan','15 a 28 jan','1 a 14 fev','15 a 28 fev','1 a 14 mar','15 a 28 mar','1 a 14 abr','15 a 28 abr','1 a 14 mai','15 a 28 mai','1 a 14 jun','15 a 28 jun'],
+  bars=document.getElementById('bars'),fig=document.getElementById('fig'),cap=document.getElementById('cap'),cur=null,bs=[];
+  function sel(i){if(cur)cur.classList.remove('on');cur=bs[i];cur.classList.add('on');
+    fig.textContent='R$ '+d[i].toLocaleString('pt-BR');
+    var t=i?((d[i]/d[i-1]-1)*100):null;
+    cap.textContent=p[i]+(t===null?'':' · '+(t>=0?'+':'')+t.toFixed(1).replace('.',',')+'% sobre a quinzena anterior')}
+  d.forEach(function(v,i){var b=document.createElement('button');b.style.height=(v/5500*100)+'%';
+    b.setAttribute('aria-label',p[i]+': R$ '+v.toLocaleString('pt-BR'));
+    ['mouseenter','focus','click'].forEach(function(ev){b.addEventListener(ev,function(){sel(i)})});bars.appendChild(b);bs.push(b)});
+  sel(11);
+
+  var stage=document.getElementById('c3d');if(!window.THREE)return;
+  var W=3.4,H=2.15,R=.17;
+  function rr(w,h,r){var s=new THREE.Shape(),x=-w/2,y=-h/2;s.moveTo(x+r,y);s.lineTo(x+w-r,y);s.quadraticCurveTo(x+w,y,x+w,y+r);s.lineTo(x+w,y+h-r);
+    s.quadraticCurveTo(x+w,y+h,x+w-r,y+h);s.lineTo(x+r,y+h);s.quadraticCurveTo(x,y+h,x,y+h-r);s.lineTo(x,y+r);s.quadraticCurveTo(x,y,x+r,y);return s}
+  function face(w,h,r){var g=new THREE.ShapeGeometry(rr(w,h,r),12),u=g.attributes.uv,q=g.attributes.position;
+    for(var i=0;i<u.count;i++)u.setXY(i,(q.getX(i)+w/2)/w,(q.getY(i)+h/2)/h);return g}
+
+  var A=document.createElement('canvas'),B=document.createElement('canvas'),M=document.createElement('canvas');
+  A.width=B.width=M.width=1024;A.height=B.height=M.height=646;
+  var tA=new THREE.CanvasTexture(A),tB=new THREE.CanvasTexture(B),tM=new THREE.CanvasTexture(M);
+  function paint(){
+    var c=A.getContext('2d'),g=c.createLinearGradient(0,0,1024,646);g.addColorStop(0,'#26398c');g.addColorStop(.55,'#141f4d');g.addColorStop(1,'#0a1030');
+    c.fillStyle=g;c.fillRect(0,0,1024,646);
+    c.strokeStyle='rgba(255,255,255,.09)';c.lineWidth=46;c.lineCap='round';c.beginPath();c.arc(800,200,230,.5,5.6);c.stroke();
+    c.strokeStyle='rgba(217,185,106,.5)';c.lineWidth=2;c.strokeRect(28,28,968,590);
+    c.fillStyle='#fff';c.font='700 66px "Shippori Mincho",Georgia,serif';c.fillText('FinGuard',72,122);
+    var cg=c.createLinearGradient(72,230,190,320);cg.addColorStop(0,'#f1dc9c');cg.addColorStop(1,'#b8944a');c.fillStyle=cg;c.fillRect(72,230,120,90);
+    c.strokeStyle='rgba(60,40,10,.55)';c.lineWidth=2;c.strokeRect(72,230,120,90);c.beginPath();c.moveTo(72,275);c.lineTo(192,275);c.moveTo(132,230);c.lineTo(132,320);c.stroke();
+    c.strokeStyle='rgba(255,255,255,.85)';c.lineWidth=4;for(var k=1;k<=3;k++){c.beginPath();c.arc(240,275,k*15,-.9,.9);c.stroke()}
+    c.fillStyle='#fff';c.font='500 54px "Plus Jakarta Sans",system-ui,sans-serif';c.fillText('••••  ••••  ••••  4821',72,448);
+    c.font='500 28px "Plus Jakarta Sans",system-ui,sans-serif';c.fillStyle='rgba(255,255,255,.72)';c.fillText('Cartão virtual · Assinaturas',72,570);
+    c.textAlign='right';c.fillText('12/30',952,570);c.textAlign='left';
+    tA.needsUpdate=true;
+    var m=M.getContext('2d');m.fillStyle='#000';m.fillRect(0,0,1024,646);m.strokeStyle='#fff';m.lineWidth=2;
+    for(var j=0;j<24;j++){m.beginPath();for(var x=0;x<=1024;x+=8){var y=240+j*15+Math.sin(x/70+j*.32)*40;x?m.lineTo(x,y):m.moveTo(x,y)}m.stroke()}
+    tM.needsUpdate=true;
+    var b=B.getContext('2d');b.fillStyle='#0f1836';b.fillRect(0,0,1024,646);b.fillStyle='#04070f';b.fillRect(0,70,1024,110);
+    b.fillStyle='#e8eaf2';b.fillRect(72,240,600,80);b.fillStyle='#8a92ad';b.font='italic 28px "Plus Jakarta Sans",sans-serif';b.fillText('Assinatura',90,290);
+    b.fillStyle='#fff';b.fillRect(700,240,150,80);b.fillStyle='#0f1836';b.font='700 40px "Plus Jakarta Sans",sans-serif';b.fillText('•••',740,295);
+    b.fillStyle='rgba(255,255,255,.7)';b.font='500 26px "Plus Jakarta Sans",sans-serif';b.fillText('Cartão virtual emitido pela FinGuard.',72,420);b.fillText('Bloqueie ou exclua a qualquer momento pelo app.',72,462);
+    b.strokeStyle='rgba(217,185,106,.5)';b.lineWidth=2;b.strokeRect(28,28,968,590);tB.needsUpdate=true}
+  paint();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(paint);
+
+  var ren=new THREE.WebGLRenderer({antialias:true,alpha:true});ren.setPixelRatio(Math.min(devicePixelRatio,2));stage.appendChild(ren.domElement);
+  var sc=new THREE.Scene(),cam=new THREE.PerspectiveCamera(34,1,.1,50);
+  sc.add(new THREE.AmbientLight(0xffffff,.8));var l1=new THREE.PointLight(0xffe8b0,1.6,30);l1.position.set(3,3,6);sc.add(l1);
+  var l2=new THREE.PointLight(0x7aa2ff,1.2,30);l2.position.set(-4,-2,5);sc.add(l2);
+
+  var eg=new THREE.ExtrudeGeometry(rr(W,H,R),{depth:.06,bevelEnabled:true,bevelSize:.03,bevelThickness:.03,bevelSegments:3,curveSegments:12});eg.translate(0,0,-.03);
+  var body=new THREE.Mesh(eg,new THREE.MeshStandardMaterial({color:0xd9b96a,metalness:.75,roughness:.3}));
+  var U={map:{value:tA},mask:{value:tM},tilt:{value:new THREE.Vector2()},time:{value:0}};
+  var front=new THREE.Mesh(face(W-.1,H-.1,R-.05),new THREE.ShaderMaterial({uniforms:U,
+    vertexShader:'varying vec2 v;void main(){v=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
+    fragmentShader:'uniform sampler2D map,mask;uniform vec2 tilt;uniform float time;varying vec2 v;void main(){vec3 b=texture2D(map,v).rgb;float m=texture2D(mask,v).r;'+
+    'float ph=v.x*1.3+v.y*.7+tilt.x*1.5-tilt.y*1.1;vec3 rb=.5+.5*cos(6.2831*(ph+vec3(0.,.33,.67)));vec3 c=b+rb*m*.5;'+
+    'float s=abs(v.x*.8+v.y*.55-(.5+tilt.x*1.3+.12*sin(time)));c+=vec3(1.,.94,.82)*smoothstep(.09,0.,s)*.2;gl_FragColor=vec4(c,1.);}'}));
+  front.position.z=.062;
+  var back=new THREE.Mesh(face(W-.1,H-.1,R-.05),new THREE.MeshBasicMaterial({map:tB}));back.rotation.y=Math.PI;back.position.z=-.062;
+  var grp=new THREE.Group();grp.add(body,front,back);sc.add(grp);
+
+  function sz(){var w=stage.clientWidth,h=stage.clientHeight;ren.setSize(w,h);cam.aspect=w/h;cam.position.z=w<500?9.5:7.2;cam.updateProjectionMatrix()}
+  sz();addEventListener('resize',sz);
+
+  var dr=false,mv=0,px=0,py=0,ox=0,oy=0,tx=0,ty=0,ax=0,ay=0,fl=0,fs=0,t=0,el=ren.domElement;
+  el.addEventListener('pointerdown',function(e){dr=true;mv=0;px=e.clientX;py=e.clientY;el.setPointerCapture(e.pointerId)});
+  el.addEventListener('pointermove',function(e){var r=el.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*2;ty=((e.clientY-r.top)/r.height-.5)*2;
+    if(!dr)return;var dx=e.clientX-px,dy=e.clientY-py;mv+=Math.abs(dx)+Math.abs(dy);ox+=dx*.01;oy=Math.max(-.6,Math.min(.6,oy+dy*.008));px=e.clientX;py=e.clientY});
+  el.addEventListener('pointerup',function(){dr=false;if(mv<6){fs=fs?0:1;ox=0}});
+  el.addEventListener('pointercancel',function(){dr=false});
+  el.addEventListener('pointerleave',function(){tx=0;ty=0});
+  (function loop(){requestAnimationFrame(loop);t+=.016;
+    if(!dr){ox*=.96;oy*=.94}
+    ax+=(tx-ax)*.08;ay+=(ty-ay)*.08;fl+=(fs*Math.PI-fl)*.09;
+    var ry=fl+ox+ax*.45+(reduce?0:Math.sin(t*.7)*.14),rx=-.08+oy+ay*.3;
+    grp.rotation.set(rx,ry,0);grp.position.y=reduce?0:Math.sin(t*1.1)*.07;
+    U.tilt.value.set(Math.sin(ry),rx);U.time.value=t;ren.render(sc,cam)})();
+})();
+</script>
+</body>
+</html>
